@@ -4,14 +4,14 @@
 department
 {%endblock%}
 
-{%block content %}
+{%block content %}<br>
 <h1 style="text-align: center;"> Our Department</h1>
 <hr>
 
 {%for d in dept %}
-<div style="text-align:center; background-color: rgb(16, 192, 16); width: 800px; margin-left: 270px; color: aliceblue; border-radius: 20px;">
-<h1 >{{d.dept_name}}</h1>
-<p>{{d.dept_descrption}}</p>
+<div class="mx-auto w-50 bg-info text-center text-white p-3 my-3 border border-warning">
+    <h1 >{{d.dept_name}}</h1>
+    <p>{{d.dept_descrption}}</p>
 </div>
 {% endfor %}
 {%endblock%}

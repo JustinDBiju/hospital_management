@@ -1,0 +1,38 @@
+{% extends 'adminnav.html'%}
+
+{%block title %}
+home
+{%endblock%}
+
+{%block content %}
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">Add Doctor</h2>
+    <br><br>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Doctor Name</label>
+        <input type="text" class="form-control" name="doct_name" required>
+        <label>Doctor Specialization</label>
+        <input type="text" class="form-control" name="doct_spec" required>
+        <label>Department Name</label>
+        <input type="text" class="form-control" name="dep_name" required>
+        <label for="doct_img">Upload Image:</label>
+        <input type="file" id="doct_img" name="doct_img">
+        <br>
+        <input type="submit" value="Add Doctor" class="form-control btn btn-primary">
+    </form>
+</div>
+
+{% if error == "no" %}
+        <script>
+            alert("Record Saved Successfully");
+            window.location = ("{% url 'admindoc' %}");
+        </script>
+    {% endif %}
+    {% if error == "yes" %}
+        <script>
+            alert("ISomething went wrong !!!");
+        </script>
+    {% endif %}
+
+{%endblock%}

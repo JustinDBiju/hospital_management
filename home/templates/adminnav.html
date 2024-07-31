@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title %}{%endblock%}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/mystyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.0/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.0/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.0/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.2/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.1.0/css/buttons.dataTables.css">
+    <script>
+        new DataTable('#example', {
+    layout: {
+        topStart: {
+            buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+        }
+    }
+});
+    </script>
+
+
+
+    <style>
+        .nav-link{
+        color: white !important;
+        }
+        .nav-link:hover{
+        color: yellow !important;
+        background-color: rgb(0, 9, 128);
+        border-radius: 10px;
+        }
+        .navbar-brand:hover{
+        color: yellow !important;
+        font-weight: bold;
+        }
+        .rounded{
+            border-top:8px solid lightblue;
+            border-radius: 5px;
+        }
+        .mydivstyle:hover{
+            box-shadow:0 0 20px 0 rgba(0,0,0,0.3);
+            transform:translateY(-20px)
+            
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+    <a class="navbar-brand" href="">City Hospital Admin Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myMenu">
+        <ul class="navbar-nav text-center ml-auto ">
+            {% if request.user.is_staff %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'admindashboard' %}"><i class="fa-sharp-duotone fa-solid fa-house-chimney"></i> Home</a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Doctor</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
+                <a class="dropdown-item" href="{% url 'admindoc' %}">View Doctor</a>
+            </div></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Patient</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+                <a class="dropdown-item" href="{% url 'adminpat' %}">View Patient</a>
+            </div></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Department</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'add_dep' %}">Add Department</a>
+                    <a class="dropdown-item" href="{% url 'admindep' %}">View Department</a>
+            </div></li>
+            <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appointment</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Add Appointment</a>
+                    <a class="dropdown-item" href="">View Appointment</a>
+            </div></li> -->
+            {% endif %}
+            {% if request.user.is_staff %}
+            <li class="nav-item"><a class="nav-link"  href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+
+    </div>
+</div>
+    
+</nav>
+
+{%block content %}
+
+{%endblock%}
+
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

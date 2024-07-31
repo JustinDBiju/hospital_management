@@ -22,3 +22,11 @@ class BookingForm(forms.ModelForm):
             'doct_name':'Doctor Name:',
             'booking_date':'Booking Date:'
         }
+
+
+doct_img =forms.ImageField(
+    label="Doctors Image",
+    widget=forms.ClearableFileInput(attrs={
+        'class':'form-control'
+    })
+)

@@ -1,0 +1,34 @@
+{% extends 'adminnav.html'%}
+
+{%block title %}
+home
+{%endblock%}
+
+{%block content %}
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">Add Department</h2>
+    <br><br>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Department Name</label>
+        <input type="text" class="form-control" name="dept_name" required>
+        <label>Doctor Descrption</label>
+        <textarea class="form-control" name="dept_descrption" required></textarea>
+        <br>
+        <input type="submit" value="Add Department" class="form-control btn btn-primary">
+    </form>
+</div>
+
+{% if error == "no" %}
+        <script>
+            alert("Record Saved Successfully");
+            window.location = ("{% url 'admindoc' %}");
+        </script>
+    {% endif %}
+    {% if error == "yes" %}
+        <script>
+            alert("ISomething went wrong !!!");
+        </script>
+    {% endif %}
+
+{%endblock%}

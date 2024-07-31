@@ -1,0 +1,45 @@
+{% extends 'adminnav.html'%}
+{% load static%}
+{%block title %}
+adminpage
+{%endblock%}
+
+{%block content %}
+
+
+
+
+<br>
+<br>
+
+<div class="jumbotron" style="margin-bottom:0px;">
+  <h1 class="display-5" style="text-align:center;">Hello, Admin</h1>
+  <hr class="my-2">
+</div><br><br>
+<div class="row">
+  <div class="col-sm-4 text-center mydivstyle">
+  <h2 style="color:blue;">{{d}}</h2>
+  <a href="{% url 'admindoc' %}"><h4 style="color: black;">Doctors</h4>
+  <hr class="rounded"></a>
+  </div>
+
+
+
+
+  <div class="col-sm-4 text-center mydivstyle">
+  <h2 style="color:blue;">{{p}}</h2>
+  <a href="{% url 'adminpat' %}"><h4 style="color: black;">Patients</h4>
+  <hr class="rounded"></a>
+  </div>
+
+
+
+
+  <div class="col-sm-4 text-center mydivstyle">
+  <h2 style="color:blue;">{{de}}</h2>
+  <a href="{% url 'admindep' %}"><h4 style="color: black;">Departments</h4>
+  <hr class="rounded"></a>
+  </div>
+
+</div>
+{%endblock%}
