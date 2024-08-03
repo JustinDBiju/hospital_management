@@ -22,12 +22,12 @@ home
 {% if error == "no" %}
         <script>
             alert("Record Saved Successfully");
-            window.location = ("{% url 'admindoc' %}");
+            window.location = ("{% url 'admindep' %}");
         </script>
     {% endif %}
     {% if error == "yes" %}
         <script>
-            alert("ISomething went wrong !!!");
+            alert("Something went wrong !!!");
         </script>
     {% endif %}
 
